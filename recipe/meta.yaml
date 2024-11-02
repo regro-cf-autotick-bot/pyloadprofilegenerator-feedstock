@@ -1,17 +1,17 @@
 {% set name = "pyloadprofilegenerator" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyloadprofilegenerator-{{ version }}.tar.gz
-  sha256: f541c06922106e5c4a9ac59a5d16efbd9ab75bf1c0d586d052196778ab423d70
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyloadprofilegenerator-{{ version }}.tar.gz
+  sha256: f09a4a4d4e123b1a04f329f9e4dd517854c2d7e672514705b32dee65603f78a2
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - python >=3.6
     - setuptools-git
     - pip
+    - setuptools
   run:
     - python >=3.6
     - setuptools
